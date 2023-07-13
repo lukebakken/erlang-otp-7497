@@ -3,6 +3,8 @@
 set -o errexit
 set -o nounset
 
+asdf current
+
 declare -r nodename="${1:-a}"
 
 declare -r script_dir="$(realpath "$(dirname "$BASH_SOURCE")")"

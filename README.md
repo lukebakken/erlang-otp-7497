@@ -4,7 +4,29 @@ https://github.com/erlang/otp/issues/7497
 
 # Reproduction steps
 
+## My test environment
+
 **NOTE:** the code requires the use of the `asdf` version manager, with Erlang `25.3.2.3` and `26.0.2` installed.
+
+* Arch Linux
+* `asdf` version manager
+* OpenSSL 3.1.1
+* Erlang crypto statically linked to OpenSSL 3.1.1
+    ```
+    KERL_CONFIGURE_OPTIONS="--enable-kernel-poll \
+        --enable-silent-rules=no \
+        --enable-smp-support \
+        --enable-threads \
+        --with-microstate-accounting=extra \
+        --without-cdv \
+        --without-debugger \
+        --without-docs \
+        --without-et \
+        --without-observer \
+        --without-odbc \
+        --without-wx \
+        --with-ssl=$HOME/opt/openssl/3.1.1 --with-ssl-rpath=no --disable-dynamic-ssl-lib"
+    ```
 
 ## Clone repo
 
