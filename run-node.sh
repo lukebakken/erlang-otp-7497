@@ -13,7 +13,7 @@ declare -r erl_ssl_path="$(erl -noinput -eval 'io:format("~s~n", [filename:dirna
 
 if [[ $nodename == 'a' ]]
 then
-    erl -pa "$erl_ssl_path" -proto_dist inet_tls -ssl_dist_optfile "$script_dir/inet-dist-tls.config" -sname a
+    erl -pa "$erl_ssl_path" -proto_dist inet_tls -ssl_dist_optfile "$script_dir/inet-dist-tls.config" -sname a -eval 'net_kernel:verbose(2).'
 else
-    erl -pa "$erl_ssl_path" -proto_dist inet_tls -ssl_dist_optfile "$script_dir/inet-dist-tls.config" -sname b -eval "net_kernel:connect_node(a@$HOSTNAME), erlang:display(nodes())"
+    erl -pa "$erl_ssl_path" -proto_dist inet_tls -ssl_dist_optfile "$script_dir/inet-dist-tls.config" -sname b -eval "net_kernel:verbose(2), net_kernel:connect_node(a@$HOSTNAME), erlang:display(nodes())"
 fi
